@@ -19,7 +19,7 @@ public class TrainingSpringbootApplication {
         a.setNama("Muhamad");
         a.setAlamat("bandung");
         a.setTanggalLahir(Date.valueOf("1991-03-20"));
-        repo.save(a);
+//        repo.save(a);
 
 
         List<Anggota> list = repo.findByNamaLike("%M%");

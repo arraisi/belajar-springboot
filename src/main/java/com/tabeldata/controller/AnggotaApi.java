@@ -5,13 +5,11 @@
  */
 package com.tabeldata.controller;
 
-import java.util.Date;
-import java.util.HashMap;
-import java.util.Map;
-import javax.annotation.PostConstruct;
+import com.tabeldata.entity.Anggota;
+import com.tabeldata.repository.AnggotaRepository;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 /**
@@ -21,22 +19,13 @@ import org.springframework.web.bind.annotation.RestController;
 //(url didefinisikan tiap methods)
 @RestController
 public class AnggotaApi {
-    //membuat servlet (url)
-    @GetMapping(value = "/api/info")
-    public Map info(@RequestParam(required = false) String data) {
-        Map<String, Object> param = new HashMap<>();
-        param.put("nama", "Dimas Maryanto");
-        param.put("tanggal", new Date());
-        param.put("method", "get");
-        return param;
+    @Autowired
+    private AnggotaRepository repo;
+    
+    @GetMapping("/api/anggota/list")
+    public List<Anggota> cariSemuaData(){
+        
+      return repo.findAll();
     }
     
-    @PostMapping(value="/api/info")
-    public Map set(@RequestParam(required = false) String data){
-        Map<String, Object> params = new HashMap<>();
-        params.put("nama", "Dimas Maryanto");
-        params.put("tanggal", new Date());
-        params.put("method", "post");
-        return params;
-    }
 }

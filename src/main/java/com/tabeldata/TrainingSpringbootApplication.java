@@ -16,10 +16,10 @@ public class TrainingSpringbootApplication {
         ApplicationContext springContext = SpringApplication.run(TrainingSpringbootApplication.class, args);
         AnggotaRepository repo = springContext.getBean(AnggotaRepository.class);
         Anggota a = new Anggota();
-        a.setNama("Muhamad");
+        a.setNama("Abdul");
         a.setAlamat("bandung");
-        a.setTanggalLahir(Date.valueOf("1991-03-20"));
-//        repo.save(a);
+        a.setTanggalLahir(Date.valueOf("1994-08-16"));
+        repo.save(a);
 
 
         List<Anggota> list = repo.findByNamaLike("%M%");
@@ -27,6 +27,6 @@ public class TrainingSpringbootApplication {
         for (Anggota anggota : list) {
             System.out.println(anggota.toString());
         }
-//        a.setKode(1);
+        a.setKode(1);
     }
 }

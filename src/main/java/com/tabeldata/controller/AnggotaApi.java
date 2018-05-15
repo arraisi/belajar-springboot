@@ -36,7 +36,7 @@ public class AnggotaApi {
       return repo.findAll();
     }
     
-    @GetMapping("/")
+    @GetMapping("/{id}")
     public Anggota findById(@PathVariable("id") Integer kode){
       return repo.findOne(kode);
     }
@@ -51,7 +51,7 @@ public class AnggotaApi {
       return repo.save(anggota);
     }
     
-    @DeleteMapping("/")
+    @DeleteMapping("/{id}")
     public ResponseEntity<Anggota> delete(@PathVariable("id") Integer id){
       repo.delete(id);
       return new ResponseEntity<>(HttpStatus.OK);
